@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace LaunchPad
 {
@@ -22,8 +25,22 @@ namespace LaunchPad
             //A class for callable program functions
             public void OpenFE()
             {
-                Process.Start("explorer.exe",
-                    @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs");
+                //Specifying directory to load into when called
+                const string DefDir = @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\";
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.InitialDirectory = DefDir;
+                //Filter
+                fileDialog.Filter = "Shortcut (*.lnk) |*.lnk|Executable (*.exe) | *.exe";
+                fileDialog.Title = "Add An App To LaunchPad";
+                fileDialog.ShowDialog();
+
+                string FilePath = fileDialog.FileName;
+                //string fileExtension = System.IO.Path.GetExtension(FilePath);
+
+                // Example usage
+                MessageBox.Show($"Extension: {FilePath}");
+
+
             }
         }
         public MainWindow()
@@ -34,7 +51,6 @@ namespace LaunchPad
         public void Button_Click(object sender, RoutedEventArgs e)
         {
             SystemFuncs Funcs = new SystemFuncs();
-            MessageBox.Show("Hey I have Been Clicked!");
             Funcs.OpenFE();
 
         }
