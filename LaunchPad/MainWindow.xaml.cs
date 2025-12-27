@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Enumeration;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,14 +58,17 @@ namespace LaunchPad
                 //Read the text file for stored paths
                 string TextPath = "ProgsLaunch.txt";
 
-                if(!File.Exists(TextPath))
+                //Check condition to see if file exists
+                if (!File.Exists(TextPath))
                 {
                     MessageBox.Show("LaunchPad has no apps to launch! Please add apps to the launcher");
                     return;
                 }
 
+                //Array to store paths
                 string[] StoredPaths = File.ReadAllLines(TextPath);
 
+                //Loop through stored paths and launch each app
                 foreach (string Path in StoredPaths)
                 {
                     try
@@ -79,7 +83,11 @@ namespace LaunchPad
                     }
                     catch (System.Exception ex)
                     {
-                        MessageBox.Show($"Error launching {Path} : {ex.Message}");
+                        if (new FileInfo(TextPath).Length == 0)
+                        {
+                            MessageBox.Show($"Error launching {Path} : {ex.Message}");
+                        }
+                        
                     }
                 }
 
@@ -93,15 +101,24 @@ namespace LaunchPad
 
         public void Button_Click_Add(object sender, RoutedEventArgs e)
         {
+            //When add apps button is clicked - open FE function
             SystemFuncs Funcs = new SystemFuncs();
             Funcs.OpenFE();
 
         }
         public void Button_Click_Launch(object sender, RoutedEventArgs e)
         {
+            //when launch apps button is clicked - launch function
             SystemFuncs Funcs = new SystemFuncs();
-            MessageBox.Show($"Launch!");
             Funcs.Launcher();
+        }
+
+        private void Btn_Del_Apps(object sender, RoutedEventArgs e)
+        {
+            //When delete apps button is clicked - open the text file in notepad for user to edit
+            string FileName = "ProgsLaunch.txt";
+            Process.Start("notepad.exe", FileName);
+
         }
     }
 }

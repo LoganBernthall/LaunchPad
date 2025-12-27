@@ -4,16 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LaunchPad"
+        Icon="Assets/RocketFaviconConverted.ico"
         mc:Ignorable="d"
         Title="LaunchPad" Height="200" Width="500" WindowStartupLocation="CenterScreen" WindowState="Minimized">
     <Grid Background="#FFBAB6B6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="367*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="327*"/>
             <ColumnDefinition Width="133*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Welcome To LaunchPad! 🚀" HorizontalAlignment="Left" Height="27" Margin="20,25,0,0" VerticalAlignment="Top" Width="164" RenderTransformOrigin="0.476,-4.148"/>
-        <Label Content="Auto Startup Tool For Windows" HorizontalAlignment="Left" Height="27" Margin="10,57,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="0.476,-4.148"/>
-        <Button x:Name="BtnAddApps" Content="Add Apps" HorizontalAlignment="Left" Height="33" Margin="20,84,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click_Add" Background="#FFC2B8B8"/>
-        <Button x:Name="BtnBegin" Content="Launch Loaded Apps" HorizontalAlignment="Left" Height="33" Margin="20,122,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click_Launch" Background="#FFC2B8B8"/>
+        <Label Content="Welcome To LaunchPad! 🚀" HorizontalAlignment="Left" Height="27" Margin="20,25,0,0" VerticalAlignment="Top" Width="164" RenderTransformOrigin="0.476,-4.148" Grid.ColumnSpan="2"/>
+        <Label Content="Auto Startup Tool For Windows" HorizontalAlignment="Left" Height="27" Margin="10,57,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="0.476,-4.148" Grid.ColumnSpan="2"/>
+        <Button x:Name="BtnAddApps" Content="Add Apps" HorizontalAlignment="Left" Height="33" Margin="20,84,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click_Add " Background="#FFC2B8B8" Grid.ColumnSpan="2"/>
+        <Button x:Name="BtnBegin" Content="Launch Loaded Apps" HorizontalAlignment="Left" Height="33" Margin="20,122,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click_Launch" Background="#FFC2B8B8" Grid.ColumnSpan="2"/>
+        <Button x:Name="BtnDelApps" Content="Delete Apps" HorizontalAlignment="Left" Height="33" Margin="149,84,0,0" VerticalAlignment="Top" Width="164" Background="#FFC2B8B8" Grid.Column="1" Click="Btn_Del_Apps"/>
     </Grid>
 </Window>
