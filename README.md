@@ -1,4 +1,4 @@
-# 🧩 LaunchPad!
+# 🚀 LaunchPad!
 
 A Windows Executable where you can add apps and launch all at once automatically.
 
@@ -8,14 +8,14 @@ A Windows Executable where you can add apps and launch all at once automatically
 
 ---
 
-## 📌 Features
+## 📌 Features:
 
 - Add applications to LaunchPad, Launch at once. 
 - Automatically runs CMD commands such as DISM, SFC and GPUPDATE to keep your PC healthy. 
 
 ---
 
-## credits:
+## ✨ Credits:
 
 * Favicon:
   *    <a href="https://www.flaticon.com/free-icons/launch" title="launch icons">Launch icons created by Freepik - Flaticon</a>
