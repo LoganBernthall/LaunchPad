@@ -3,8 +3,10 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Enumeration;
 using System.Text;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -12,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Timer = System.Timers.Timer;
 
 namespace LaunchPad
 {
@@ -93,10 +95,38 @@ namespace LaunchPad
 
             }
 
+            public void PromptTimer() //Function to time 2 minutes then run CMD commands
+            {
+                Timer cmdTimer = new Timer(120000); // 2 minutes 120000
+                cmdTimer.AutoReset = false; 
+                cmdTimer.Elapsed += CmdTimer_Elapsed;
+                cmdTimer.Start();
+
+            }
+            private void CmdTimer_Elapsed(object sender, ElapsedEventArgs e) //Function called after 2 minutes of running for CMD commands
+            {
+                //SFC
+                Process SFC = new Process();
+                SFC.StartInfo = new ProcessStartInfo
+                {
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    FileName = "cmd.exe",
+                    Arguments = "sfc /scannow"
+                   
+                };
+
+            }
+
+
         }
         public MainWindow()
         {
+            //Put code here that runs on app start
             InitializeComponent();
+            
+            SystemFuncs Funcs = new SystemFuncs();
+            Funcs.PromptTimer();
+
         }
 
         public void Button_Click_Add(object sender, RoutedEventArgs e)
