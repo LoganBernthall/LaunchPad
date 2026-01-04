@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.IO;
+using static LaunchPad.MainWindow;
 
 namespace LaunchPad
 {
@@ -18,7 +19,10 @@ namespace LaunchPad
     /// </summary>
     public partial class DeleteAppsWindow : Window
     {
-
+        public class DelFuncs
+        {
+            //A class for callable program functions for the delect Window
+        }
         private void LoadListView()
         {
             //Code to load ListView with apps from ProgsLaunch.txt
@@ -29,9 +33,9 @@ namespace LaunchPad
             {
                 if (string.IsNullOrWhiteSpace(FullProgPath)) continue;
 
-                string displayName = System.IO.Path.GetFileName(FullProgPath);
+                string DisplayName = System.IO.Path.GetFileName(FullProgPath);
 
-                ListViewAppsToDel.Items.Add(displayName);
+                ListViewAppsToDel.Items.Add(DisplayName);
             }
 
         }
@@ -41,17 +45,31 @@ namespace LaunchPad
         {
             InitializeComponent();
             LoadListView();
+ 
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
 
-
         }
 
         private void BtnDeleteFromLP_Click(object sender, RoutedEventArgs e)
         {
+            string AppName = (string)ListViewAppsToDel.SelectedItem;
+            //Function to delete selected app from ProgsLaunch.txt
+            if (string.IsNullOrWhiteSpace(AppName)) return;
+            List<string> AllLines = new List<string>(File.ReadAllLines("ProgsLaunch.txt"));
+            for (int i = AllLines.Count - 1; i >= 0; i--)
+            {
+                string FullProgPath = AllLines[i];
+                string DisplayName = System.IO.Path.GetFileName(FullProgPath);
+                if (DisplayName.Equals(AppName, StringComparison.OrdinalIgnoreCase))
+                {
+                    AllLines.RemoveAt(i);
+                }
+            }
+            File.WriteAllLines("ProgsLaunch.txt", AllLines);
 
         }
     }
