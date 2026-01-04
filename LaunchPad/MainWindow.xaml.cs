@@ -145,10 +145,16 @@ namespace LaunchPad
 
         private void Btn_Del_Apps(object sender, RoutedEventArgs e)
         {
-            //When delete apps button is clicked - open the text file in notepad for user to edit
-            string FileName = "ProgsLaunch.txt";
-            Process.Start("notepad.exe", FileName);
+            //Code opens the delete apps window
+            DeleteAppsWindow DeleteWindow = new DeleteAppsWindow();
+            DeleteWindow.Show();
 
+
+            //////////Old Functionality
+            //When delete apps button is clicked - open the text file in notepad for user to edit
+            //string FileName = "ProgsLaunch.txt";
+            //Process.Start("notepad.exe", FileName);
+            //////////
         }
     }
 }
