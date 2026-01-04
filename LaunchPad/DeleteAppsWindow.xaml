@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LaunchPad"
+        Icon="Assets/RocketFaviconConverted.ico"
         mc:Ignorable="d"
-        Title="Delete Apps From LaunchPad" Height="200" Width="500" WindowStartupLocation="CenterScreen" WindowState="Minimized">
-    <Grid>
-        
+        Title="Delete Apps From LaunchPad" Height="200" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFBAB6B6">
+        <Label Content="Delete application from LaunchPad:" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="198"/>
+        <ListView x:Name="ListViewAppsToDel" HorizontalAlignment="Left" Height="144" Margin="10,37,0,0" VerticalAlignment="Top" Width="292" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListView_SelectionChanged" Foreground="Black" BorderBrush="#FFBAB6B6" Background="#FFBAB6B6">
+            <ListView.View >
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="BtnDeleteFromLP" Content="Delete From LaunchPad" HorizontalAlignment="Left" Height="41" Margin="307,92,0,0" VerticalAlignment="Top" Width="168" Background="#FFC2B8B8" Click="BtnDeleteFromLP_Click"/>
+
     </Grid>
 </Window>
