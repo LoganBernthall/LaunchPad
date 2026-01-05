@@ -23,8 +23,10 @@ namespace LaunchPad
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public class SystemFuncs 
         {
+
             //A class for callable program functions
             public void OpenFE() //Funciton opens file explorer for user to click and add apps to Launcher
             {
@@ -51,7 +53,9 @@ namespace LaunchPad
                 {
                     //Store file paths in a text file
                     File.AppendAllText("ProgsLaunch.txt", FilePath + Environment.NewLine);
-
+                    
+                    //Boot ListView load function
+                    //LoadListView();
                 }
             }
 
@@ -119,6 +123,22 @@ namespace LaunchPad
 
 
         }
+        private void LoadListView()
+        {
+            //Code to load ListView with apps from ProgsLaunch.txt
+            //Function also cuts the path down slightly
+            ListViewAppsToShow.Items.Clear();
+
+            foreach (string FullProgPath in File.ReadAllLines("ProgsLaunch.txt"))
+            {
+                if (string.IsNullOrWhiteSpace(FullProgPath)) continue;
+
+                string DisplayName = System.IO.Path.GetFileName(FullProgPath);
+
+                ListViewAppsToShow.Items.Add(DisplayName);
+            }
+        }
+
         public MainWindow()
         {
             //Put code here that runs on app start
@@ -126,6 +146,9 @@ namespace LaunchPad
             
             SystemFuncs Funcs = new SystemFuncs();
             Funcs.PromptTimer();
+
+            //Boot ListView load function
+            LoadListView();
 
         }
 
@@ -141,6 +164,7 @@ namespace LaunchPad
             //when launch apps button is clicked - launch function
             SystemFuncs Funcs = new SystemFuncs();
             Funcs.Launcher();
+            
         }
 
         private void Btn_Del_Apps(object sender, RoutedEventArgs e)
@@ -150,11 +174,19 @@ namespace LaunchPad
             DeleteWindow.Show();
 
 
-            //////////Old Functionality
+            /*
+         
+            Old Functionality
             //When delete apps button is clicked - open the text file in notepad for user to edit
             //string FileName = "ProgsLaunch.txt";
             //Process.Start("notepad.exe", FileName);
-            //////////
+            
+             */
+        }
+
+        private void ListViewAppsToShow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LaunchPad"
         Icon="Assets/RocketFaviconConverted.ico"
         mc:Ignorable="d"
-        Title="LaunchPad" Height="200" Width="500" WindowStartupLocation="CenterScreen" WindowState="Minimized">
+        Title="LaunchPad" Height="400" Width="500" WindowStartupLocation="CenterScreen" WindowState="Minimized">
     <Grid Background="#FFBAB6B6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
@@ -18,6 +18,7 @@
         <Label Content="Auto Startup Tool For Windows" HorizontalAlignment="Left" Height="27" Margin="10,57,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="0.476,-4.148" Grid.ColumnSpan="3"/>
         <Button x:Name="BtnAddApps" Content="Add Apps" HorizontalAlignment="Left" Height="33" Margin="20,84,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click_Add " Background="#FFC2B8B8" Grid.ColumnSpan="3"/>
         <Button x:Name="BtnBegin" Content="Launch Loaded Apps" HorizontalAlignment="Left" Height="33" Margin="20,122,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click_Launch" Background="#FFC2B8B8" Grid.ColumnSpan="3"/>
-        <Button x:Name="BtnDelApps" Content="Delete Apps" HorizontalAlignment="Left" Height="33" Margin="89,84,0,0" VerticalAlignment="Top" Width="164" Background="#FFC2B8B8" Grid.Column="2" Click="Btn_Del_Apps"/>
+        <Button x:Name="BtnDelApps" Content="Delete Apps" HorizontalAlignment="Left" Height="33" Margin="20,160,0,0" VerticalAlignment="Top" Width="164" Background="#FFC2B8B8" Click="Btn_Del_Apps" Grid.ColumnSpan="3"/>
+        <ListBox x:Name="ListViewAppsToShow" Background="#FFBAB6B6" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="156" Margin="119,84,0,0" VerticalAlignment="Top" Width="247" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListViewAppsToShow_SelectionChanged"/>
     </Grid>
 </Window>
