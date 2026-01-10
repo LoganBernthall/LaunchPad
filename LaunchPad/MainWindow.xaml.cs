@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Timer = System.Timers.Timer;
+using LaunchPad.Logging;
 
 namespace LaunchPad
 {
@@ -53,9 +54,9 @@ namespace LaunchPad
                 {
                     //Store file paths in a text file
                     File.AppendAllText("ProgsLaunch.txt", FilePath + Environment.NewLine);
-                    
+                    Logger.Info($"Added application to LaunchPad: {FilePath}");
                     //Boot ListView load function
-                    //LoadListView();
+                    //  LoadListView();
                 }
             }
 
@@ -68,6 +69,7 @@ namespace LaunchPad
                 if (!File.Exists(TextPath))
                 {
                     MessageBox.Show("LaunchPad has no apps to launch! Please add apps to the launcher");
+                    Logger.Warning("No applications found to launch.");
                     return;
                 }
 
@@ -92,6 +94,7 @@ namespace LaunchPad
                         if (new FileInfo(TextPath).Length == 0)
                         {
                             MessageBox.Show($"Error launching {Path} : {ex.Message}");
+                            Logger.Error($"Error launching {Path}: {ex.Message}");
                         }
                         
                     }
@@ -105,6 +108,7 @@ namespace LaunchPad
                 cmdTimer.AutoReset = false; 
                 cmdTimer.Elapsed += CmdTimer_Elapsed;
                 cmdTimer.Start();
+                Logger.Info("CMD Timer started for 2 minutes.");
 
             }
             private void CmdTimer_Elapsed(object sender, ElapsedEventArgs e) //Function called after 2 minutes of running for CMD commands
@@ -118,6 +122,7 @@ namespace LaunchPad
                     Arguments = "sfc /scannow"
                    
                 };
+                Logger.Info("Starting SFC scan.");
 
             }
 
@@ -137,18 +142,20 @@ namespace LaunchPad
 
                 ListViewAppsToShow.Items.Add(DisplayName);
             }
+            Logger.Info("ListView loaded with apps from ProgsLaunch.txt.");
         }
 
         public MainWindow()
         {
             //Put code here that runs on app start
             InitializeComponent();
-            
+            Logger.Info("LaunchPad application started.");
             SystemFuncs Funcs = new SystemFuncs();
             Funcs.PromptTimer();
 
             //Boot ListView load function
             LoadListView();
+            Logger.Info("MainWindow initialized.");
 
         }
 

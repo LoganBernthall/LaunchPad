@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaunchPad.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -70,6 +71,7 @@ namespace LaunchPad
                 }
             }
             File.WriteAllLines("ProgsLaunch.txt", AllLines);
+            Logger.Info($"Deleted {AppName} from ProgsLaunch.txt.");
 
         }
     }
