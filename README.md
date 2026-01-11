@@ -10,7 +10,7 @@ A Windows Executable where you can add apps and launch all at once automatically
 ## 📌 Features:
 
 - Add applications to LaunchPad, Launch at once. 
-- Automatically runs CMD commands such as DISM, SFC and GPUPDATE to keep your PC healthy. 
+- Automatically runs SFC /Scannow to keep your PC healthy. 
 
 ---
 
