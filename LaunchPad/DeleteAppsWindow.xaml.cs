@@ -68,6 +68,9 @@ namespace LaunchPad
                 if (DisplayName.Equals(AppName, StringComparison.OrdinalIgnoreCase))
                 {
                     AllLines.RemoveAt(i);
+
+                    //Close Window
+                    Close();
                 }
             }
             File.WriteAllLines("ProgsLaunch.txt", AllLines);
