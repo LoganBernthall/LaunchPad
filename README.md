@@ -6,6 +6,12 @@ A Windows Executable where you can add apps and launch all at once automatically
 ![Platform](https://img.shields.io/badge/platform-Windows-blue?style=flat-square)
 
 ---
+## 🖥 Purpose:
+
+- User adds commonly used applications to LaunchPad.
+- When user loads up LaunchPad, they can launch all grouped applications at once.
+
+---
 
 ## 📌 Features:
 
