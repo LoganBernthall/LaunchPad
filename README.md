@@ -1,4 +1,4 @@
-# 🚀 LaunchPad!
+# LaunchPad
 
 A Windows Executable where you can add apps and launch all at once automatically.
 
@@ -6,21 +6,21 @@ A Windows Executable where you can add apps and launch all at once automatically
 ![Platform](https://img.shields.io/badge/platform-Windows-blue?style=flat-square)
 
 ---
-## 🖥 Purpose:
+## Purpose:
 
 - User adds commonly used applications to LaunchPad.
 - When user loads up LaunchPad, they can launch all grouped applications at once.
 
 ---
 
-## 📌 Features:
+## Features:
 
 - Add applications to LaunchPad, Launch at once. 
 - Automatically runs SFC /Scannow to keep your PC healthy. 
 
 ---
 
-## ✨ Credits:
+## Credits:
 
 * Favicon:
   *    <a href="https://www.flaticon.com/free-icons/launch" title="launch icons">Launch icons created by Freepik - Flaticon</a>
